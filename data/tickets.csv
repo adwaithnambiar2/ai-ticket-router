@@ -1,0 +1,181 @@
+text,category,group_id,split
+My invoice has an extra charge,billing,billing-0,train
+"Hello, My invoice has an extra charge. Can someone help?",billing,billing-0,train
+Support team: My invoice has an extra charge. Thanks for looking into this.,billing,billing-0,train
+I was billed twice for my subscription,billing,billing-1,train
+"Hello, I was billed twice for my subscription. Can someone help?",billing,billing-1,train
+Support team: I was billed twice for my subscription. Thanks for looking into this.,billing,billing-1,train
+Please refund the payment for my cancelled plan,billing,billing-2,train
+"Hello, Please refund the payment for my cancelled plan. Can someone help?",billing,billing-2,train
+Support team: Please refund the payment for my cancelled plan. Thanks for looking into this.,billing,billing-2,train
+My credit card payment was declined,billing,billing-3,train
+"Hello, My credit card payment was declined. Can someone help?",billing,billing-3,train
+Support team: My credit card payment was declined. Thanks for looking into this.,billing,billing-3,train
+I need a receipt for my purchase,billing,billing-4,train
+"Hello, I need a receipt for my purchase. Can someone help?",billing,billing-4,train
+Support team: I need a receipt for my purchase. Thanks for looking into this.,billing,billing-4,train
+The subscription price on my bill is wrong,billing,billing-5,train
+"Hello, The subscription price on my bill is wrong. Can someone help?",billing,billing-5,train
+Support team: The subscription price on my bill is wrong. Thanks for looking into this.,billing,billing-5,train
+How can I update my payment method,billing,billing-6,train
+"Hello, How can I update my payment method. Can someone help?",billing,billing-6,train
+Support team: How can I update my payment method. Thanks for looking into this.,billing,billing-6,train
+I want to cancel the automatic renewal,billing,billing-7,train
+"Hello, I want to cancel the automatic renewal. Can someone help?",billing,billing-7,train
+Support team: I want to cancel the automatic renewal. Thanks for looking into this.,billing,billing-7,train
+The tax amount on the invoice is incorrect,billing,billing-8,test
+"Hello, The tax amount on the invoice is incorrect. Can someone help?",billing,billing-8,test
+Support team: The tax amount on the invoice is incorrect. Thanks for looking into this.,billing,billing-8,test
+My refund has not arrived in my bank account,billing,billing-9,test
+"Hello, My refund has not arrived in my bank account. Can someone help?",billing,billing-9,test
+Support team: My refund has not arrived in my bank account. Thanks for looking into this.,billing,billing-9,test
+I cannot log in to my account,account,account-0,train
+"Hello, I cannot log in to my account. Can someone help?",account,account-0,train
+Support team: I cannot log in to my account. Thanks for looking into this.,account,account-0,train
+Please reset my forgotten password,account,account-1,train
+"Hello, Please reset my forgotten password. Can someone help?",account,account-1,train
+Support team: Please reset my forgotten password. Thanks for looking into this.,account,account-1,train
+My account is locked after login attempts,account,account-2,train
+"Hello, My account is locked after login attempts. Can someone help?",account,account-2,train
+Support team: My account is locked after login attempts. Thanks for looking into this.,account,account-2,train
+I need to change my account email address,account,account-3,train
+"Hello, I need to change my account email address. Can someone help?",account,account-3,train
+Support team: I need to change my account email address. Thanks for looking into this.,account,account-3,train
+The verification code never arrives,account,account-4,train
+"Hello, The verification code never arrives. Can someone help?",account,account-4,train
+Support team: The verification code never arrives. Thanks for looking into this.,account,account-4,train
+How do I enable two factor authentication,account,account-5,train
+"Hello, How do I enable two factor authentication. Can someone help?",account,account-5,train
+Support team: How do I enable two factor authentication. Thanks for looking into this.,account,account-5,train
+Please delete my user account,account,account-6,train
+"Hello, Please delete my user account. Can someone help?",account,account-6,train
+Support team: Please delete my user account. Thanks for looking into this.,account,account-6,train
+My password reset link has expired,account,account-7,train
+"Hello, My password reset link has expired. Can someone help?",account,account-7,train
+Support team: My password reset link has expired. Thanks for looking into this.,account,account-7,train
+I lost access to my authenticator and cannot sign in,account,account-8,test
+"Hello, I lost access to my authenticator and cannot sign in. Can someone help?",account,account-8,test
+Support team: I lost access to my authenticator and cannot sign in. Thanks for looking into this.,account,account-8,test
+Someone accessed my account without permission,account,account-9,test
+"Hello, Someone accessed my account without permission. Can someone help?",account,account-9,test
+Support team: Someone accessed my account without permission. Thanks for looking into this.,account,account-9,test
+The app crashes when I open a document,bug,bug-0,train
+"Hello, The app crashes when I open a document. Can someone help?",bug,bug-0,train
+Support team: The app crashes when I open a document. Thanks for looking into this.,bug,bug-0,train
+The page shows an unexpected error,bug,bug-1,train
+"Hello, The page shows an unexpected error. Can someone help?",bug,bug-1,train
+Support team: The page shows an unexpected error. Thanks for looking into this.,bug,bug-1,train
+The save button does not work,bug,bug-2,train
+"Hello, The save button does not work. Can someone help?",bug,bug-2,train
+Support team: The save button does not work. Thanks for looking into this.,bug,bug-2,train
+My screen freezes while loading the dashboard,bug,bug-3,train
+"Hello, My screen freezes while loading the dashboard. Can someone help?",bug,bug-3,train
+Support team: My screen freezes while loading the dashboard. Thanks for looking into this.,bug,bug-3,train
+The app displays a blank page,bug,bug-4,train
+"Hello, The app displays a blank page. Can someone help?",bug,bug-4,train
+Support team: The app displays a blank page. Thanks for looking into this.,bug,bug-4,train
+The uploaded file disappears after saving,bug,bug-5,train
+"Hello, The uploaded file disappears after saving. Can someone help?",bug,bug-5,train
+Support team: The uploaded file disappears after saving. Thanks for looking into this.,bug,bug-5,train
+The search returns an internal server error,bug,bug-6,train
+"Hello, The search returns an internal server error. Can someone help?",bug,bug-6,train
+Support team: The search returns an internal server error. Thanks for looking into this.,bug,bug-6,train
+The mobile layout overlaps the buttons,bug,bug-7,train
+"Hello, The mobile layout overlaps the buttons. Can someone help?",bug,bug-7,train
+Support team: The mobile layout overlaps the buttons. Thanks for looking into this.,bug,bug-7,train
+The export creates a corrupted document,bug,bug-8,test
+"Hello, The export creates a corrupted document. Can someone help?",bug,bug-8,test
+Support team: The export creates a corrupted document. Thanks for looking into this.,bug,bug-8,test
+The app stops responding when I select a filter,bug,bug-9,test
+"Hello, The app stops responding when I select a filter. Can someone help?",bug,bug-9,test
+Support team: The app stops responding when I select a filter. Thanks for looking into this.,bug,bug-9,test
+Please add a dark mode option,feature_request,feature_request-0,train
+"Hello, Please add a dark mode option. Can someone help?",feature_request,feature_request-0,train
+Support team: Please add a dark mode option. Thanks for looking into this.,feature_request,feature_request-0,train
+I would like integration with Google Calendar,feature_request,feature_request-1,train
+"Hello, I would like integration with Google Calendar. Can someone help?",feature_request,feature_request-1,train
+Support team: I would like integration with Google Calendar. Thanks for looking into this.,feature_request,feature_request-1,train
+Can you add offline access,feature_request,feature_request-2,train
+"Hello, Can you add offline access. Can someone help?",feature_request,feature_request-2,train
+Support team: Can you add offline access. Thanks for looking into this.,feature_request,feature_request-2,train
+Please support exporting reports to PDF,feature_request,feature_request-3,train
+"Hello, Please support exporting reports to PDF. Can someone help?",feature_request,feature_request-3,train
+Support team: Please support exporting reports to PDF. Thanks for looking into this.,feature_request,feature_request-3,train
+I want a custom dashboard feature,feature_request,feature_request-4,train
+"Hello, I want a custom dashboard feature. Can someone help?",feature_request,feature_request-4,train
+Support team: I want a custom dashboard feature. Thanks for looking into this.,feature_request,feature_request-4,train
+Could you add keyboard shortcuts,feature_request,feature_request-5,train
+"Hello, Could you add keyboard shortcuts. Can someone help?",feature_request,feature_request-5,train
+Support team: Could you add keyboard shortcuts. Thanks for looking into this.,feature_request,feature_request-5,train
+Please add a way to schedule reports,feature_request,feature_request-6,train
+"Hello, Please add a way to schedule reports. Can someone help?",feature_request,feature_request-6,train
+Support team: Please add a way to schedule reports. Thanks for looking into this.,feature_request,feature_request-6,train
+I would like support for multiple languages,feature_request,feature_request-7,train
+"Hello, I would like support for multiple languages. Can someone help?",feature_request,feature_request-7,train
+Support team: I would like support for multiple languages. Thanks for looking into this.,feature_request,feature_request-7,train
+Can you add an option to customize notification sounds,feature_request,feature_request-8,test
+"Hello, Can you add an option to customize notification sounds. Can someone help?",feature_request,feature_request-8,test
+Support team: Can you add an option to customize notification sounds. Thanks for looking into this.,feature_request,feature_request-8,test
+Please build an integration with Slack,feature_request,feature_request-9,test
+"Hello, Please build an integration with Slack. Can someone help?",feature_request,feature_request-9,test
+Support team: Please build an integration with Slack. Thanks for looking into this.,feature_request,feature_request-9,test
+My package has not arrived,shipping,shipping-0,train
+"Hello, My package has not arrived. Can someone help?",shipping,shipping-0,train
+Support team: My package has not arrived. Thanks for looking into this.,shipping,shipping-0,train
+The tracking number is not working,shipping,shipping-1,train
+"Hello, The tracking number is not working. Can someone help?",shipping,shipping-1,train
+Support team: The tracking number is not working. Thanks for looking into this.,shipping,shipping-1,train
+My delivery was sent to the wrong address,shipping,shipping-2,train
+"Hello, My delivery was sent to the wrong address. Can someone help?",shipping,shipping-2,train
+Support team: My delivery was sent to the wrong address. Thanks for looking into this.,shipping,shipping-2,train
+The parcel arrived damaged,shipping,shipping-3,train
+"Hello, The parcel arrived damaged. Can someone help?",shipping,shipping-3,train
+Support team: The parcel arrived damaged. Thanks for looking into this.,shipping,shipping-3,train
+I need to change the shipping address,shipping,shipping-4,train
+"Hello, I need to change the shipping address. Can someone help?",shipping,shipping-4,train
+Support team: I need to change the shipping address. Thanks for looking into this.,shipping,shipping-4,train
+When will my order be dispatched,shipping,shipping-5,train
+"Hello, When will my order be dispatched. Can someone help?",shipping,shipping-5,train
+Support team: When will my order be dispatched. Thanks for looking into this.,shipping,shipping-5,train
+A product is missing from the delivered package,shipping,shipping-6,train
+"Hello, A product is missing from the delivered package. Can someone help?",shipping,shipping-6,train
+Support team: A product is missing from the delivered package. Thanks for looking into this.,shipping,shipping-6,train
+The courier marked my order delivered but it is missing,shipping,shipping-7,train
+"Hello, The courier marked my order delivered but it is missing. Can someone help?",shipping,shipping-7,train
+Support team: The courier marked my order delivered but it is missing. Thanks for looking into this.,shipping,shipping-7,train
+The shipment has been delayed at the warehouse,shipping,shipping-8,test
+"Hello, The shipment has been delayed at the warehouse. Can someone help?",shipping,shipping-8,test
+Support team: The shipment has been delayed at the warehouse. Thanks for looking into this.,shipping,shipping-8,test
+Please arrange a replacement for my broken delivery,shipping,shipping-9,test
+"Hello, Please arrange a replacement for my broken delivery. Can someone help?",shipping,shipping-9,test
+Support team: Please arrange a replacement for my broken delivery. Thanks for looking into this.,shipping,shipping-9,test
+How do I create a new project,how_to,how_to-0,train
+"Hello, How do I create a new project. Can someone help?",how_to,how_to-0,train
+Support team: How do I create a new project. Thanks for looking into this.,how_to,how_to-0,train
+Where can I find the user guide,how_to,how_to-1,train
+"Hello, Where can I find the user guide. Can someone help?",how_to,how_to-1,train
+Support team: Where can I find the user guide. Thanks for looking into this.,how_to,how_to-1,train
+How can I invite a teammate to a workspace,how_to,how_to-2,train
+"Hello, How can I invite a teammate to a workspace. Can someone help?",how_to,how_to-2,train
+Support team: How can I invite a teammate to a workspace. Thanks for looking into this.,how_to,how_to-2,train
+Please explain how to export my existing report,how_to,how_to-3,train
+"Hello, Please explain how to export my existing report. Can someone help?",how_to,how_to-3,train
+Support team: Please explain how to export my existing report. Thanks for looking into this.,how_to,how_to-3,train
+How do I configure email notifications,how_to,how_to-4,train
+"Hello, How do I configure email notifications. Can someone help?",how_to,how_to-4,train
+Support team: How do I configure email notifications. Thanks for looking into this.,how_to,how_to-4,train
+Where is the setting to change the display language,how_to,how_to-5,train
+"Hello, Where is the setting to change the display language. Can someone help?",how_to,how_to-5,train
+Support team: Where is the setting to change the display language. Thanks for looking into this.,how_to,how_to-5,train
+Can you explain how to organize files into folders,how_to,how_to-6,train
+"Hello, Can you explain how to organize files into folders. Can someone help?",how_to,how_to-6,train
+Support team: Can you explain how to organize files into folders. Thanks for looking into this.,how_to,how_to-6,train
+How do I use the search filters,how_to,how_to-7,train
+"Hello, How do I use the search filters. Can someone help?",how_to,how_to-7,train
+Support team: How do I use the search filters. Thanks for looking into this.,how_to,how_to-7,train
+Where can I find instructions for sharing a dashboard,how_to,how_to-8,test
+"Hello, Where can I find instructions for sharing a dashboard. Can someone help?",how_to,how_to-8,test
+Support team: Where can I find instructions for sharing a dashboard. Thanks for looking into this.,how_to,how_to-8,test
+Please show me how to archive an old project,how_to,how_to-9,test
+"Hello, Please show me how to archive an old project. Can someone help?",how_to,how_to-9,test
+Support team: Please show me how to archive an old project. Thanks for looking into this.,how_to,how_to-9,test

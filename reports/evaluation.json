@@ -1,0 +1,167 @@
+{
+  "dataset": "AI-authored synthetic demo; not real customer tickets",
+  "split": "Base issue groups held out; all variants of an issue stay together",
+  "train_rows": 144,
+  "test_rows": 36,
+  "train_groups": 48,
+  "test_groups": 12,
+  "sklearn_version": "1.6.1",
+  "accuracy": 0.75,
+  "macro_f1": 0.7166666666666667,
+  "labels": [
+    "account",
+    "billing",
+    "bug",
+    "feature_request",
+    "how_to",
+    "shipping"
+  ],
+  "confusion_matrix": [
+    [
+      6,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      3,
+      0,
+      0,
+      0,
+      3
+    ],
+    [
+      0,
+      0,
+      6,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      6,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      6,
+      0
+    ],
+    [
+      0,
+      3,
+      3,
+      0,
+      0,
+      0
+    ]
+  ],
+  "classification_report": {
+    "account": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 6.0
+    },
+    "billing": {
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1-score": 0.5,
+      "support": 6.0
+    },
+    "bug": {
+      "precision": 0.6666666666666666,
+      "recall": 1.0,
+      "f1-score": 0.8,
+      "support": 6.0
+    },
+    "feature_request": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 6.0
+    },
+    "how_to": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 6.0
+    },
+    "shipping": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 6.0
+    },
+    "accuracy": 0.75,
+    "macro avg": {
+      "precision": 0.6944444444444443,
+      "recall": 0.75,
+      "f1-score": 0.7166666666666667,
+      "support": 36.0
+    },
+    "weighted avg": {
+      "precision": 0.6944444444444444,
+      "recall": 0.75,
+      "f1-score": 0.7166666666666667,
+      "support": 36.0
+    }
+  },
+  "errors": [
+    {
+      "text": "My refund has not arrived in my bank account",
+      "expected": "billing",
+      "predicted": "shipping"
+    },
+    {
+      "text": "Hello, My refund has not arrived in my bank account. Can someone help?",
+      "expected": "billing",
+      "predicted": "shipping"
+    },
+    {
+      "text": "Support team: My refund has not arrived in my bank account. Thanks for looking into this.",
+      "expected": "billing",
+      "predicted": "shipping"
+    },
+    {
+      "text": "The shipment has been delayed at the warehouse",
+      "expected": "shipping",
+      "predicted": "bug"
+    },
+    {
+      "text": "Hello, The shipment has been delayed at the warehouse. Can someone help?",
+      "expected": "shipping",
+      "predicted": "bug"
+    },
+    {
+      "text": "Support team: The shipment has been delayed at the warehouse. Thanks for looking into this.",
+      "expected": "shipping",
+      "predicted": "bug"
+    },
+    {
+      "text": "Please arrange a replacement for my broken delivery",
+      "expected": "shipping",
+      "predicted": "billing"
+    },
+    {
+      "text": "Hello, Please arrange a replacement for my broken delivery. Can someone help?",
+      "expected": "shipping",
+      "predicted": "billing"
+    },
+    {
+      "text": "Support team: Please arrange a replacement for my broken delivery. Thanks for looking into this.",
+      "expected": "shipping",
+      "predicted": "billing"
+    }
+  ]
+}
