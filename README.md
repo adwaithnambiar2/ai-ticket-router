@@ -1,101 +1,239 @@
-# TicketRoute — AI Support Ticket Classifier
+# TicketRoute
+### AI Support Ticket Classification & Routing
 
-A local machine learning application that categorizes a support message and suggests a team. Prepared for Adwaith Nambiar with ChatGPT assistance. This is an educational personal project, not a system used by a business.
+Turn a support message into a category, a suggested team, and a routing recommendation.
+
+**TicketRoute** is a local machine learning application that uses **TF-IDF and logistic regression** to classify customer-support messages. A Flask API serves predictions to a responsive browser interface, with a human-review fallback when the model's top score is low.
+
+**Python · scikit-learn · Flask · NumPy · HTML/CSS/JavaScript**
+
+[Quick start](#quick-start) · [Model results](#model-results) · [API](#api) · [Project structure](#project-structure)
+
+---
+
+## Overview
+
+Support messages cover everything from login problems to billing questions. TicketRoute explores how a lightweight text classifier can assist with initial triage.
+
+Enter a message such as:
+
+> I was billed twice for my subscription.
+
+The application predicts a category, suggests the responsible team, and displays scores for all six categories. It recommends human review when the highest score is below **0.45**.
+
+This is an educational prototype using synthetic data. Routing is a displayed recommendation; the app does not send tickets to external teams.
 
 ## Features
 
-- Six categories: billing, account, bug, feature request, shipping, and how-to.
-- TF-IDF word unigrams/bigrams plus logistic regression.
-- Browser interface, JSON prediction API, and health endpoint.
-- Model score breakdown and a human-review fallback below 0.45.
-- Reproducible training, held-out evaluation, confusion matrix, and automated tests.
-- No paid API, GPU, or downloaded language model required.
+- **Six-category classification** covering common support topics.
+- **Interactive web interface** with example tickets and score breakdowns.
+- **Local inference** without a paid API, GPU, or external language model.
+- **Human-review fallback** for predictions with low model scores.
+- **Reusable ML pipeline** that saves text preprocessing and the classifier together.
+- **Evaluation report** with accuracy, macro F1, confusion matrix, and misclassified examples.
+- **Automated tests** for predictions, input validation, app readiness, and review routing.
 
-## Windows CMD setup
+### Categories and teams
 
-Install Python 3.11 or 3.12, extract this folder, and open CMD in it.
-
-```bat
-py -3.11 -m venv .venv
-.venv\Scripts\activate
-python -m pip install -r requirements.txt
-python train.py
-python -m unittest discover -s tests -v
-python app.py
-```
-
-Use `py -3.12` instead if you have Python 3.12. Open http://127.0.0.1:5003. Stop with Ctrl+C. After initial setup, `start_windows.bat` trains and starts the app using the existing environment.
-
-macOS/Linux: create an environment with `python3 -m venv .venv`, activate using `source .venv/bin/activate`, then run the same pip, training, testing, and app commands.
+| Category | Typical issue | Suggested team |
+| --- | --- | --- |
+| Account | Login, password, or verification problems | Account support |
+| Billing | Payments, invoices, or refunds | Finance |
+| Bug | Crashes, errors, or broken functionality | Engineering |
+| Feature request | New capabilities or integrations | Product |
+| Shipping | Deliveries, tracking, or damaged parcels | Fulfillment |
+| How-to | Instructions for existing features | Customer success |
 
 ## How it works
 
-Training fits the vectorizer on training text only, then learns a logistic regression classifier. Inference transforms a new ticket using that same fitted vectorizer. The largest predicted probability determines the suggested category; scores below 0.45 are routed to a person. The threshold is a demonstration heuristic, not validated against business costs. Scores are not calibrated certainty, and unknown or mixed-topic messages can still receive incorrect high scores.
+### Training
 
-## Data and evaluation
+1. Load labeled messages from `data/tickets.csv`.
+2. Separate training and test data using predefined issue groups.
+3. Fit a TF-IDF vectorizer on training text, using individual words and two-word phrases.
+4. Train a multiclass logistic regression classifier.
+5. Evaluate on held-out issue groups and save the pipeline and evaluation report.
 
-`data/tickets.csv` contains 180 AI-authored synthetic examples: 60 base issues with three wording variants each. There are 144 training rows from 48 issue groups and 36 held-out rows from 12 issue groups. Variants of one base issue never cross the split. This reduces direct variant leakage, but the small, stylistically similar synthetic dataset cannot establish real-world performance.
+### Prediction
 
-See `reports/evaluation.json` for measured accuracy, macro F1, per-class metrics, confusion matrix, and errors. The script records its scikit-learn version; compatible dependency versions can produce slightly different results. Do not treat this small test set as a tuning set. Future evaluation should use independent real tickets, broader labels, and human-reviewed examples.
+The saved pipeline transforms a new message and returns category probabilities. The highest-scoring category determines the suggested team. If its score is below 0.45, the displayed routing becomes **Human review**.
 
-Retrain with `python train.py` after editing data. Save the same model pipeline for inference to keep feature transformations consistent. The generated `models/router.joblib` is excluded from Git; train locally after cloning. Only load joblib files you trust.
+**Design choice:** TF-IDF and logistic regression provide a compact baseline that is quick to train and easy to run on a CPU. They also expose the limitations of vocabulary-based classification when unfamiliar wording appears.
+
+Scores are model estimates, not calibrated certainty. The review threshold is a demonstration heuristic; a confident prediction can still be incorrect.
+
+## Model results
+
+Results from the committed [evaluation report](reports/evaluation.json), produced with scikit-learn **1.6.1**:
+
+| Metric | Result |
+| --- | --- |
+| Held-out accuracy | **75.0%** |
+| Macro F1 | **0.717** |
+| Training examples | 144 |
+| Test examples | 36 |
+| Training issue groups | 48 |
+| Test issue groups | 12 |
+
+### What the results show
+
+The model correctly classified **27 of 36** test messages. It struggled with shipping messages and confused a refund delay with a delivery issue. Shipping recall was **0%** on this small held-out set, illustrating why overall accuracy alone is insufficient.
+
+The dataset contains **180 AI-authored synthetic messages**: 60 base issues, each with three wording variants. All variants of an issue remain in the same split, preventing those closely related examples from appearing in both training and testing.
+
+These results describe a small synthetic demonstration, not expected performance on real customer tickets. The test rows represent only 12 distinct base issues, so the 36 observations are not independent examples of customer behavior.
+
+## Quick start
+
+### Requirements
+
+- Python **3.9–3.12**; Windows setup was verified with Python 3.9.
+- Git, if cloning the repository.
+- Internet access to install dependencies. Classification itself runs locally.
+
+### 1. Clone the project
+
+```bash
+git clone https://github.com/adwaithnambiar2/ai-ticket-router.git
+cd ai-ticket-router
+```
+
+### 2. Create a virtual environment
+
+**Windows CMD**
+
+```bat
+py -3.9 -m venv .venv
+.venv\Scripts\activate
+```
+
+If you have Python 3.11 or 3.12, substitute that version in the first command.
+
+**macOS / Linux**
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+### 3. Install and train
+
+```bash
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python train.py
+```
+
+Training generates:
+
+- `models/router.joblib` — fitted vectorizer and classifier.
+- `reports/evaluation.json` — metrics, confusion matrix, and prediction errors.
+
+The model file is excluded from Git and must be generated after cloning. Dependency resolution varies by Python version, so exact metrics may differ slightly between environments.
+
+### 4. Run the tests
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+The suite contains five tests covering API predictions, invalid input, page and health responses, probability totals, and uncertain-input review. Running it also retrains the model and regenerates the evaluation report.
+
+### 5. Launch the application
+
+```bash
+python app.py
+```
+
+Open **http://127.0.0.1:5003**.
+
+Keep the terminal open while using the app. Press **Ctrl+C** to stop the server. On Windows, `start_windows.bat` can train and launch the app once the environment is configured.
 
 ## API
 
-- `GET /health`: model readiness.
-- `POST /api/predict`: JSON object with `text` (1–5000 characters).
+| Method | Endpoint | Purpose |
+| --- | --- | --- |
+| GET | `/health` | Confirm the application and model are loaded |
+| POST | `/api/predict` | Classify a ticket message |
 
-```bat
-curl -X POST http://127.0.0.1:5003/api/predict -H "Content-Type: application/json" -d "{\"text\":\"I was billed twice\"}"
+### Prediction request
+
+```json
+{
+  "text": "I was billed twice for my subscription"
+}
 ```
 
-The response includes `category`, `team`, `score`, `routing`, `needs_review`, and all category scores. Invalid inputs return HTTP 400; oversized requests return HTTP 413.
+**Windows CMD example**
 
-## Project files
+```bat
+curl -X POST http://127.0.0.1:5003/api/predict -H "Content-Type: application/json" -d "{\"text\":\"I was billed twice for my subscription\"}"
+```
 
-| File | Purpose |
+### Response fields
+
+| Field | Meaning |
 | --- | --- |
-| `train.py` | Fit pipeline, evaluate held-out issues, save model |
-| `router.py` | Load model, predict categories, apply routing threshold |
-| `app.py` | Local Flask UI and REST API |
-| `templates/index.html` | Responsive browser interface |
-| `data/tickets.csv` | Synthetic labeled dataset with group split |
-| `reports/evaluation.json` | Measured demo evaluation |
-| `tests/test_app.py` | API validation, predictions, readiness, fallback tests |
-| `start_windows.bat` | Start after environment setup |
+| `category` | Highest-scoring category |
+| `team` | Team associated with that category |
+| `score` | Top model probability, rounded to four decimal places |
+| `needs_review` | Whether the top score is below 0.45 |
+| `routing` | Suggested team or Human review |
+| `alternatives` | All category scores, ranked highest first |
 
-## Upload to GitHub from Windows CMD
+Messages must contain non-whitespace text and be no longer than **5,000 characters**. Invalid inputs return **HTTP 400**; request bodies exceeding the configured limit return **HTTP 413**.
 
-Create an empty repository named **ai-ticket-router** on https://github.com/new under **adwaithnambiar2**. Leave README, license, and gitignore options unchecked, since this folder includes them.
+## Project structure
 
-From the extracted project folder:
+| File | Responsibility |
+| --- | --- |
+| `app.py` | Flask routes, validation, and local server |
+| `router.py` | Model loading, prediction, and team routing |
+| `train.py` | Training pipeline, evaluation, and model persistence |
+| `templates/index.html` | Responsive interface and browser API requests |
+| `data/tickets.csv` | Synthetic examples, labels, and split groups |
+| `reports/evaluation.json` | Reproducible evaluation output |
+| `tests/test_app.py` | Automated application and prediction tests |
+| `requirements.txt` | Python dependency constraints |
+| `start_windows.bat` | Windows launch helper |
+| `.gitignore` | Excludes environments, generated models, and local secrets |
+| `LICENSE` | MIT license |
 
-```bat
-git init
-git add .
-git status --short
-git commit -m "Add AI support ticket classifier"
-git branch -M main
-git config --local credential.username adwaithnambiar2
-git remote add origin https://adwaithnambiar2@github.com/adwaithnambiar2/ai-ticket-router.git
-git push -u origin main
-```
+## Limitations
 
-Sign in as **adwaithnambiar2** when prompted. Before committing, check that `.venv` and `models` are not staged. The synthetic CSV and evaluation report should be included. If Git requests your author identity, set `git config --local user.name "Adwaith Nambiar"` and `git config --local user.email "YOUR_GITHUB_EMAIL"`, then retry the commit.
+- Synthetic examples provide limited language diversity and coverage.
+- The classifier always chooses among its six labels; it has no trained unknown-topic class.
+- Mixed-topic and unfamiliar messages may produce incorrect, high-scoring predictions.
+- The review threshold has not been tuned against real operational costs.
+- The Flask server runs on localhost for development. Authentication, monitoring, and production hosting are outside the current implementation.
+- Joblib files should only be loaded from trusted sources.
+
+## Future improvements
+
+- Collect independently labeled real-world examples.
+- Compare against a majority-class baseline and alternative text representations.
+- Evaluate unknown-topic and mixed-topic messages.
+- Calibrate probabilities and validate review thresholds on a separate validation set.
+- Improve shipping and billing coverage without tuning on the held-out test examples.
+- Add production serving, monitoring, and versioned model releases.
 
 ## Troubleshooting
 
-- **Model missing:** run `python train.py` from the project folder.
-- **Module missing:** activate `.venv` and install requirements with its Python.
-- **Port occupied:** stop the other app or change port 5003 in `app.py`.
-- **Incorrect prediction:** expected for a small synthetic dataset. Collect better data; keep a human review path.
+| Issue | Fix |
+| --- | --- |
+| Browser says connection refused | Run `python app.py` and keep that terminal open |
+| Model file is missing | Run `python train.py` before launching |
+| A package cannot be imported | Activate `.venv` and install requirements using `python -m pip` |
+| Python version is unavailable | On Windows, run `py -0p` and choose an installed supported version |
+| Port 5003 is occupied | Stop the other server or change the port in `app.py` |
+| A ticket is classified incorrectly | Review the scores and evaluation errors; this prototype requires better data for broader use |
 
-## Next steps
+## Author and attribution
 
-Add independently collected examples, evaluate out-of-domain messages, validate probability calibration and thresholds, compare a baseline, and measure per-class errors. For deployment, use a production WSGI server and add authentication, monitoring, and a documented privacy policy. The included Flask server binds to localhost and is for local development.
+**Adwaith Nambiar** · [GitHub](https://github.com/adwaithnambiar2)
 
-## Attribution
+Created with substantial ChatGPT assistance for code, documentation, and synthetic data. The project demonstrates a local workflow from training and evaluation to browser-based inference.
 
-Created with substantial ChatGPT assistance, including code and synthetic data. Review and understand the implementation before presenting it in interviews. This demonstrates local training and inference integration; uploading it to GitHub does not constitute production deployment.
+## License
 
-MIT license; see LICENSE.
+Released under the [MIT License](LICENSE).
